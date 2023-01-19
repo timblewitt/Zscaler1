@@ -1,0 +1,33 @@
+#
+# This workflow deploys the Zscaler NSS infrastructure.
+#
+# 
+#
+#
+
+name: Zscaler-NSS-Deploy
+
+on:
+  push:
+    branches: [ none ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy-nss:
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository under $GITHUB_WORKSPACE, so job can access it
+        uses: actions/checkout@v2
+
+      - name: Log on to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          enable-AzPSSession: true
+          
+      - name: Create Function App
+        uses: azure/powershell@v1
+        with:
+          inlineScript: |         
+            Write-Host "Hello world!!"
+          azPSVersion: latest 
