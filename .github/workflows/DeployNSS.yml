@@ -30,9 +30,10 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           enable-AzPSSession: true
           
-      - name: Create Function App
+      - name: Deploy Terraform
         uses: azure/powershell@v1
         with:
           inlineScript: |         
-            Write-Host "Hello world!!"
+            cd tf 
+            terraform init 
           azPSVersion: latest 
