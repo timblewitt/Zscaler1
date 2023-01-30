@@ -25,6 +25,12 @@ jobs:
       - name: Set up Terraform CLI
         uses: hashicorp/setup-terraform@v2    
 
+      - name: Log on to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          enable-AzPSSession: true
+
       - name: Terraform Init
         run: |
           cd './tf'
@@ -36,9 +42,3 @@ jobs:
           cd './tf'
           dir 
           terraform plan
-
-      - name: Log on to Azure
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-          enable-AzPSSession: true
