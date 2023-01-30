@@ -27,7 +27,6 @@ jobs:
 
       - name: Terraform Init
         run: |
-          dir
           cd './tf'
           dir
           terraform init
@@ -35,6 +34,7 @@ jobs:
       - name: Terraform Plan 
         run: |
           cd './tf'
+          dir 
           terraform plan
 
       - name: Log on to Azure
