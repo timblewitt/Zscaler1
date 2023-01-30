@@ -15,9 +15,14 @@ on:
 jobs:
   build-and-deploy-nss:
     runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
     steps:
       - name: Check out repository under $GITHUB_WORKSPACE, so job can access it
         uses: actions/checkout@v2
+      - name: Set up Terraform CLI
+        uses: hashicorp/setup-terraform@v2
 
       - name: Log on to Azure
         uses: azure/login@v1
