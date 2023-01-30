@@ -36,4 +36,5 @@ jobs:
           inlineScript: |         
             cd tf 
             terraform init 
+            terraform plan
           azPSVersion: latest 
