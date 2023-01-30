@@ -33,7 +33,8 @@ jobs:
       - name: Deploy Terraform
         uses: azure/powershell@v1
         with:
-          inlineScript: |         
+          inlineScript: |   
+            ipconfig /all      
             cd tf 
             terraform init 
             terraform plan
