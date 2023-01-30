@@ -27,12 +27,13 @@ jobs:
 
       - name: Terraform Init
         run: |
-          cd tf 
+          dir
+          cd \tf 
           terraform init
 
       - name: Terraform Plan 
         run: |
-          cd tf 
+          cd \tf 
           terraform plan
 
       - name: Log on to Azure
