@@ -21,21 +21,18 @@ jobs:
     steps:
       - name: Check out repository under $GITHUB_WORKSPACE, so job can access it
         uses: actions/checkout@v2
+
       - name: Set up Terraform CLI
-        uses: hashicorp/setup-terraform@v2
+        uses: hashicorp/setup-terraform@v2    
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan 
+        run: terraform plan
 
       - name: Log on to Azure
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           enable-AzPSSession: true
-          
-      - name: Deploy Terraform
-        uses: azure/powershell@v1
-        with:
-          inlineScript: |   
-            ipconfig /all      
-            cd tf 
-            terraform init 
-            terraform plan
-          azPSVersion: latest 
