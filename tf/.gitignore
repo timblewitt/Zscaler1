@@ -1,4 +1,5 @@
 AZURE_CREDENTIALS.txt
+backend.tf 
 
 # Local .terraform directories
 **/.terraform/*

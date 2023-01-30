@@ -14,10 +14,18 @@ on:
 
 jobs:
   build-and-deploy-nss:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
+
     defaults:
       run:
         shell: bash
+    
+    env:
+      ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.MVP_SUBSCRIPTION }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+    
     steps:
       - name: Check out repository under $GITHUB_WORKSPACE, so job can access it
         uses: actions/checkout@v2
